@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Environment / secrets
+.env
+.env.*
+
+# Data — large CSV files; commit only if small enough for GitHub (<100 MB)
+data/
+PSCompPars_*.csv
+
+# Trained model weights (regenerate with train.py)
+models/
+
+# Misc
+*.docx
+formulas!.txt
+yy
+.DS_Store
+Thumbs.db
