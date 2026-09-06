@@ -63,8 +63,9 @@ def shap_for_planet(model: HabitabilityEnsemble, row: pd.DataFrame):
     rf_vals = rf_exp.shap_values(X_arr)
     xgb_vals = xgb_exp.shap_values(X_arr)
     avg_vals = 0.5 * rf_vals + 0.5 * xgb_vals
-    avg_expected = float(0.5 * rf_exp.expected_value + 0.5 * xgb_exp.expected_value)
-    return avg_vals[0], avg_expected
+    rf_ev  = float(np.asarray(rf_exp.expected_value).flat[0])
+    xgb_ev = float(np.asarray(xgb_exp.expected_value).flat[0])
+    return avg_vals[0], 0.5 * rf_ev + 0.5 * xgb_ev
 
 def train(df: pd.DataFrame)->HabitabilityEnsemble:
     mask=df["esi"].notna() & (df["esi"] >= 0) & (df["esi"] <= 1)
