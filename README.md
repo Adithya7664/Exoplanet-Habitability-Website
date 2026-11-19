@@ -24,7 +24,8 @@ PlanetScope lets you explore thousands of confirmed exoplanets through five inte
 
 ### Machine Learning
 - **Ensemble model** combining Random Forest, XGBoost, and a Neural Network (MLP) trained on engineered features from the NASA Exoplanet Archive
-- **Earth Similarity Index (ESI)** computed from radius, temperature, mass, and insolation flux
+- **Earth Similarity Index (ESI)** computed from radius, bulk density, escape velocity, and equilibrium temperature (standard ESI exponents, geometric mean); the ensemble (weights 0.4 RF / 0.4 XGBoost / 0.2 MLP) is trained to predict it from 13 engineered planet and star features
+- **Held-out performance** (80/20 split, 6,031 planets with ESI): ensemble R² 0.994, MAE 0.008 (XGBoost 0.997, Random Forest 0.992, MLP 0.960). ESI is a deterministic function of quantities that are also model inputs, so this measures how well the ensemble reproduces the formula. With the ESI-input features removed, a Random Forest reaches R² 0.61.
 - **SHAP explanations** showing which physical features push habitability up or down for any planet
 
 ### 3D Planet Rendering
